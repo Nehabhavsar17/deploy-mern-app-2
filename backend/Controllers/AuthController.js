@@ -10,11 +10,29 @@ const signup = async (req, res) => {
 
 
 
-        const emailRegex = /^[a-z][a-z0-9]*@[a-z]+\.[a-z]+$/;
+        const emailRegex = /^[a-z][a-z0-9]*\d@[a-z]+\.[a-z]+$/;
         if (!emailRegex.test(email)) {
             return res.status(400)
                 .json({ message: "Invalid email format", success: false });
         }
+        const isEmailValid = (email) => {
+            const MAX_EMAIL_LENGTH = 254; // Max allowed length of an email address
+            const MAX_LOCAL_LENGTH = 64; // Max allowed length of the local part (before '@')
+            const [localPart, domainPart] = email.split('@');
+
+            // Check overall email length, local part, domain part, and regex validation
+            if (
+                email.length > MAX_EMAIL_LENGTH ||  // Total length validation
+                !emailRegex.test(email) ||          // Regex validation
+                !localPart ||                       // Ensure local part exists
+                !domainPart ||                      // Ensure domain part exists
+                localPart.length > MAX_LOCAL_LENGTH || // Local part length validation
+                domainPart.length > MAX_EMAIL_LENGTH - MAX_LOCAL_LENGTH - 1 // Domain length validation
+            ) {
+                return false; // Invalid email
+            }
+            return true; // Valid email
+        };
 
 
 
@@ -23,15 +41,14 @@ const signup = async (req, res) => {
         const passwordRegex = /^[A-Z][a-zA-Z]*\d.*$/; // Starts with uppercase, contains at least one digit
         if (!passwordRegex.test(password) || password.length < 6) {
             return res.status(400)
-                .json({ 
+                .json({
                     message: "Password must start with an uppercase letter, contain at least one number, and be at least 6 characters long", 
-                    success: false 
+                    success: false
                 });
         }
 
 
-        
-        
+
         if (user) {
             return res.status(409)
                 .json({ message: 'User is already exist, you can login', success: false });
