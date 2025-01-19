@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const UserSchema = new Schema({
     name: {
         type: String,
@@ -12,16 +11,9 @@ const UserSchema = new Schema({
         unique: true,
         validate: {
             validator: function (email) {
-                // Regex for validation:
-                // - Starts with a lowercase letter
-                // - Contains at least one number
-                // - Valid email format
                 const emailRegex = /^[a-z][a-z0-9]*@[a-z]+\.[a-z]+$/;
                 const isValidFormat = emailRegex.test(email);
-
-                // Check if email length is within 102 KB (102 * 1024 bytes)
                 const isValidSize = Buffer.byteLength(email, 'utf-8') <= 102 * 1024;
-
                 return isValidFormat && isValidSize;
             },
             message:
@@ -34,6 +26,5 @@ const UserSchema = new Schema({
         
     }
 });
-
 const UserModel = mongoose.model('users',UserSchema);
 module.exports = UserModel;
