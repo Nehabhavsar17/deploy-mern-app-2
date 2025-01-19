@@ -33,13 +33,14 @@ function Login() {
 
         try {
             
-            const url = "https://deploy-mern-app-2-api1.vercel.app/login"; // Change to HTTPS in production
+           // const url = `https://deploy-mern-app-2-api1.vercel.app/login`; // Change to HTTPS in production
+            const url = `https://deploy-mern-app-1-api.vercel.app/auth/login`;
             const response = await fetch(url, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(loginInfo),
+                body: JSON.stringify(loginInfo)
             });
 
             if (!response.ok) {
