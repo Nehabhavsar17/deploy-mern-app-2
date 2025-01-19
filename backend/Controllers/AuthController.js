@@ -1,15 +1,10 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require("../Models/User");
-
-
 const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const user = await UserModel.findOne({ email });
-
-
-
         const emailRegex = /^[a-z][a-z0-9]*\d@[a-z]+\.[a-z]+$/;
         if (!emailRegex.test(email)) {
             return res.status(400)
@@ -33,11 +28,6 @@ const signup = async (req, res) => {
             }
             return true; // Valid email
         };
-
-
-
-
-
         const passwordRegex = /^[A-Z][a-zA-Z]*\d.*$/; // Starts with uppercase, contains at least one digit
         if (!passwordRegex.test(password) || password.length < 6) {
             return res.status(400)
@@ -46,9 +36,6 @@ const signup = async (req, res) => {
                     success: false
                 });
         }
-
-
-
         if (user) {
             return res.status(409)
                 .json({ message: 'User is already exist, you can login', success: false });
