@@ -9,7 +9,7 @@ require('./Models/User');
 require('dotenv').config();
 require('./Models/db')
 
-app.use(express.json())
+
 const PORT=process.env.PORT||8080;
 
 
