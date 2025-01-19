@@ -26,11 +26,9 @@ body{
   max-width: 400px;
   box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
 }
-
 .container > h1{
   margin-bottom: 20px;
 }
-
 .container > form{
   display: flex;
   flex-direction: column;
@@ -40,7 +38,6 @@ body{
   display: flex;
   flex-direction: column;
 }
-
 .container input{
   width: 100%;
   font-size: 20px;
@@ -49,12 +46,10 @@ body{
   outline: none;
   border-bottom: 1px solid black;
 }
-
 .container input::placeholder{
   font-size: 12px;
   font-style: italic;
 }
-
 button{
   background-color: purple;
   border: none;
