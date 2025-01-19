@@ -1,8 +1,5 @@
-
 const ensureAuthenticated = require('../Middlewares/Auth');
-
 const router = require('express').Router();
-
 router.get('/', ensureAuthenticated, (req, res) => {
     console.log('---- logged in user detail ---', req.students);
     res.status(200).json([
@@ -16,5 +13,4 @@ router.get('/', ensureAuthenticated, (req, res) => {
         }
     ])
 });
-
 module.exports = router;
