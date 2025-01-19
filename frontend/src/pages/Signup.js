@@ -33,8 +33,8 @@ function Signup() {
         }
 
         try {
-           // const url = "https://deploy-mern-app-2-api1.vercel.app/signup";
-            const url = "https://deploy-mern-app-2-api1.vercel.app/signup";
+          
+            const url = `https://deploy-mern-app-2-api1.vercel.app/signup`;
             
             const response = await fetch(url, {
                 method: "POST",
