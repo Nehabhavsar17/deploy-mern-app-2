@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
-app.use(express.json());
+
 function Login() {
     const [loginInfo, setLoginInfo] = useState({
         email: '',
