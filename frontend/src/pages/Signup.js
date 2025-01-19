@@ -10,24 +10,18 @@ function Signup() {
         password: '',
         confirmPassword: '' // Add confirmPassword field
     });
-
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignupInfo((prev) => ({ ...prev, [name]: value }));
     };
-
     const handleSignup = async (e) => {
         e.preventDefault();
         const { name, email, password, confirmPassword } = signupInfo;
-
-        // Validation: Check if all fields are filled
         if (!name || !email || !password || !confirmPassword) {
             return handleError('All fields are required');
         }
-
-        // Validation: Check if password matches confirmPassword
         if (password !== confirmPassword) {
             return handleError('Passwords do not match');
         }
