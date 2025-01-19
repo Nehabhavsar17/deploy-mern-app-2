@@ -33,7 +33,7 @@ function Login() {
 
         try {
             
-            const url = "http://localhost:8080/auth/login"; // Change to HTTPS in production
+            const url = "https://deploy-mern-app-2-api1.vercel.app/login"; // Change to HTTPS in production
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
