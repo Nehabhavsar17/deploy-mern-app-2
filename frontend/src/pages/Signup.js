@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
+
 function Signup() {
     const [signupInfo, setSignupInfo] = useState({
         name: '',
@@ -9,32 +10,36 @@ function Signup() {
         password: '',
         confirmPassword: '' // Add confirmPassword field
     });
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignupInfo((prev) => ({ ...prev, [name]: value }));
     };
+
     const handleSignup = async (e) => {
         e.preventDefault();
         const { name, email, password, confirmPassword } = signupInfo;
+
+        // Validation: Check if all fields are filled
         if (!name || !email || !password || !confirmPassword) {
             return handleError('All fields are required');
         }
+
+        // Validation: Check if password matches confirmPassword
         if (password !== confirmPassword) {
             return handleError('Passwords do not match');
         }
 
         try {
-          
             const url = "http://localhost:8080/auth/signup";
-            
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(signupInfo)
+                body: JSON.stringify({ name, email, password }) // Send only relevant fields
             });
 
             const result = await response.json();
