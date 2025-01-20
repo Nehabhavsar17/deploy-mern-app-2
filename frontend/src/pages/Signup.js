@@ -10,9 +10,7 @@ function Signup() {
         password: '',
         confirmPassword: '' // Add confirmPassword field
     });
-
     const navigate = useNavigate();
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignupInfo((prev) => ({ ...prev, [name]: value }));
@@ -31,7 +29,6 @@ function Signup() {
         if (password !== confirmPassword) {
             return handleError('Passwords do not match');
         }
-
         try {
             const url = "http://localhost:8080/auth/signup";
             const response = await fetch(url, {
@@ -117,4 +114,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default Signup;
