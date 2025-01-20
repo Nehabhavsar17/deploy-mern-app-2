@@ -32,13 +32,13 @@ function Login() {
         }
 
         try {
-            const url = "http://localhost:8080/auth/login"; 
+            const url = "http://localhost:8080/auth/login"; // Change to HTTPS in production
             const response = await fetch(url, {
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(loginInfo)
+                body: JSON.stringify(loginInfo),
             });
 
             if (!response.ok) {
