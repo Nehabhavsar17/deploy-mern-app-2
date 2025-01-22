@@ -16,7 +16,7 @@ function Signup() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignupInfo((prev) => ({ ...prev, [name]: value }));
-  };
+  };  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
