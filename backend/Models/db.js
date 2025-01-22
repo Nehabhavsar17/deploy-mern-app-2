@@ -5,4 +5,4 @@ mongoose.connect(mongo_url)
         console.log('MongoDB Connected...');
     }).catch((err) => {
         console.log('MongoDB Connection Error: ', err);
-    })
+    })  
