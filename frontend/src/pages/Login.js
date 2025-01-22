@@ -8,9 +8,7 @@ function Login() {
         email: '',
         password: '',
     });
-
     const navigate = useNavigate();   
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setLoginInfo((prev) => ({
@@ -18,7 +16,6 @@ function Login() {
             [name]: value,
         }));
     };
-
     const handleLogin = async (e) => {
         e.preventDefault();
         const { email, password } = loginInfo;
